@@ -7,7 +7,7 @@ Aplikasi Web Tes Kepribadian DISC Berbahasa Indonesia dengan Desain Modern & Res
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/disc_id.svg)](https://github.com/cahyadsn/disc_id/stargazers)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cahyadsn/disc_id)
 [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)]()
-[![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://paypal.me/cahyadwiana)
+[![Donate]
 
 ## Pendahuluan
 
