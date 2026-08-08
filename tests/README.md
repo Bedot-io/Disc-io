@@ -1,0 +1,170 @@
+# DISC Personality Test (disc_id)
+Aplikasi Web Tes Kepribadian DISC Berbahasa Indonesia dengan Desain Modern & Responsif.
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/cahyadsn/disc_id.svg)](https://github.com/cahyadsn/disc_id/issues)
+[![GitHub forks](https://img.shields.io/github/forks/cahyadsn/disc_id.svg)](https://github.com/cahyadsn/disc_id/network)
+[![GitHub stars](https://img.shields.io/github/stars/cahyadsn/disc_id.svg)](https://github.com/cahyadsn/disc_id/stargazers)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cahyadsn/disc_id)
+[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)]()
+[![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://paypal.me/cahyadwiana)
+
+## Pendahuluan
+
+Alat tes **DISC** adalah sebuah instrumen evaluasi perilaku psikologis yang digunakan untuk memahami tipe-tipe perilaku dan gaya kepribadian seseorang. Teori ini pertama kali dikembangkan oleh **William Moulton Marston**. Dalam penerapannya di dunia profesional, bisnis, organisasi, maupun personal, alat tes ini sangat membantu dalam membuka wawasan terkait pola komunikasi dan interaksi antar-individu.
+
+Model DISC membagi tipe perilaku manusia menjadi 4 dimensi utama:
+*   **D**ominance (Dominasi): Fokus pada pencapaian hasil, kekuasaan, dan mengatasi tantangan. (Unsur ketegasan / *assertiveness*).
+*   **I**nfluence (Pengaruh): Fokus pada hubungan interpersonal, komunikasi, dan memengaruhi orang lain. (Unsur komunikasi / *communication*).
+*   **S**teadiness (Kemantapan): Fokus pada kerja sama, kesabaran, dan konsistensi. (Unsur kesabaran / *patience*).
+*   **C**ompliance (Kepatuhan): Fokus pada struktur, detail, akurasi, dan kualitas. (Unsur struktur / *structure*).
+
+Aplikasi ini dirancang untuk memudahkan pengisian tes secara mandiri secara digital serta menyajikan visualisasi hasil tes secara instan.
+
+> [!WARNING]
+> **PENTING**: Aplikasi ini dibuat untuk tujuan pembelajaran dan pengembangan diri (edukatif). Hasil dari aplikasi ini tidak boleh dijadikan sebagai satu-satunya acuan psikometri formal untuk rekrutmen profesional atau tujuan komersial resmi tanpa pengawasan psikolog berlisensi.
+
+---
+
+## Fitur Utama
+
+*   **Antarmuka Glassmorphism Modern**: Tampilan visual yang futuristik, bersih, dan memanjakan mata dengan dukungan layout yang responsif di berbagai perangkat.
+*   **Grafik Analisis SVG Interaktif**: Visualisasi otomatis berupa grafik garis (Line Chart) untuk 3 profil kepribadian utama:
+    1.  *MOST (Mask/Public Self)*: Kepribadian yang ditampilkan di muka umum.
+    2.  *LEAST (Core/Private Self)*: Kepribadian asli saat berada di bawah tekanan.
+    3.  *CHANGE (Mirror/Perceived Self)*: Kepribadian asli yang tersembunyi / persepsi diri.
+*   **Tally Box Instan**: Rekapitulasi perolehan skor dimensi D, I, S, dan C yang dihitung secara dinamis.
+*   **Rekomendasi Profesi**: Menyertakan analisis singkat kecocokan karir (*Job Match*) berdasarkan pola grafik kepribadian yang terbentuk.
+
+---
+
+## Persyaratan Sistem
+
+Untuk menjalankan aplikasi ini secara lokal, pastikan lingkungan server Anda memenuhi spesifikasi berikut:
+*   **Web Server**: Apache / Nginx
+*   **Bahasa Pemrogramam**: PHP 7.4 ke atas (direkomendasikan PHP 8.x)
+*   **Database**: MySQL atau MariaDB
+
+---
+
+## Langkah Instalasi & Konfigurasi
+
+1.  **Unduh Repositori**:
+    Unduh berkas ZIP dari repositori ini atau lakukan kloning langsung:
+    ```bash
+    git clone https://github.com/cahyadsn/disc_id.git
+    ```
+2.  **Ekstrak Berkas**:
+    Pindahkan atau ekstrak seluruh isi folder repositori ke direktori root web server Anda (misalnya `htdocs` pada XAMPP, `www` pada WampServer, atau folder aplikasi di Laragon).
+3.  **Persiapkan Database**:
+    *   Masuk ke basis data Anda (seperti phpMyAdmin atau klien database lainnya).
+    *   Buat database baru bernama `disc`.
+4.  **Impor Skema Database**:
+    *   Impor berkas SQL yang berada di dalam folder `db/disc.sql` ke dalam database `disc` yang baru saja Anda buat.
+5.  **Konfigurasi Koneksi**:
+    *   Salin file `.env.example` menjadi `.env` di direktori root proyek.
+    *   Sesuaikan kredensial database (`DB_HOST`, `DB_USER`, `DB_PASS`, `DB_NAME`) di dalam file `.env` dengan konfigurasi server lokal Anda.
+    *   Kredensial database akan dimuat secara otomatis oleh [config.php](/inc/config.php).
+6.  **Jalankan Aplikasi**:
+    *   Buka browser Anda dan akses aplikasi melalui alamat lokal (contoh: `http://localhost/disc_id`).
+
+---
+
+## Unit Testing (Pengujian)
+
+Aplikasi ini dilengkapi dengan unit testing menggunakan PHP murni tanpa ketergantungan library eksternal (native unit testing). Pengujian ini memvalidasi keakuratan rumus konversi skor dan pola kepribadian.
+
+Untuk menjalankan pengujian:
+```bash
+php tests/run_tests.php
+```
+
+Informasi lebih lanjut tentang struktur pengujian dapat dilihat di folder [tests/](/tests/).
+
+---
+
+## Struktur Proyek
+
+Berikut adalah struktur direktori dan file dalam proyek ini:
+
+```text
+disc_id/
+├── css/
+│   └── disc.css            # Stylesheet utama dengan gaya modern (Glassmorphism) & responsif
+├── db/
+│   └── disc.sql            # Skema basis data MySQL/MariaDB untuk data instrumen & pola kepribadian
+├── img/
+│   └── home.png            # Aset gambar/tangkapan layar untuk halaman utama
+├── inc/
+│   ├── config.php          # Konfigurasi aplikasi dan inisialisasi koneksi database (.env)
+│   └── formula.php         # Logika formula konversi skor dan penentuan tipe pola DISC
+├── js/
+│   └── disc-chart.js       # Logika visualisasi grafik garis DISC berbasis SVG (Vanilla JS)
+├── tests/
+│   ├── README.md           # Panduan detail mengenai pengujian unit
+│   └── run_tests.php       # Berkas pengujian unit (native) untuk logika formula & mock database
+├── .env.example            # Templat berkas konfigurasi lingkungan
+├── .gitignore              # Daftar berkas/direktori yang diabaikan oleh Git
+├── LICENSE                 # Lisensi perangkat lunak (MIT)
+├── README.md               # Dokumentasi utama proyek ini
+├── index.php               # Halaman beranda dengan kuesioner interaktif tes DISC
+└── result.php              # Halaman hasil analisis skor, grafik, dan rekomendasi profesi
+```
+
+## Changelog
+
+### [2.1.1] - 2026-07-28 12:11
+*   **Struktur & Layout**: Mengubah tata letak tabel kuesioner pada `index.php` menjadi susunan kartu responsif berbasis `div` dengan CSS Grid yang mendukung tampilan ramah seluler (*mobile-friendly*).
+*   **Keamanan & Konfigurasi**: Mengganti file `db.php` menjadi `config.php`, menambahkan file `.env` & `.env.example` untuk memisahkan kredensial database, serta mengoptimalkan kode query SQL dari potensi injeksi dan *null reference*.
+
+### [2.1.0] - 2026-07-20 08:27
+*   **Pengujian**: Menambahkan unit testing native menggunakan PHP murni tanpa library pihak ketiga untuk menguji fungsi formula dan pola kepribadian (`getDISCResults` & `getPattern`) lengkap dengan mock database.
+
+### [2.0.1] - 2026-07-09 15:06
+*   **Desain**: Memindahkan posisi tombol **PROSES** ke sebelah kanan bawah form tabel agar mengikuti alur pembacaan pengguna yang lebih natural.
+*   **Tata Letak**: Mengubah penjajaran teks (*text-alignment*) pada kolom daftar **Gambaran Diri** menjadi rata kiri (*left-aligned*) agar teks deskripsi lebih rapi dan mudah dibaca secara vertikal.
+
+---
+
+## Disclaimer
+
+*   Tampilan antarmuka dan data yang ada pada repositori ini mungkin memiliki perbedaan dengan demo web yang dirilis secara publik.
+*   Data instrumen asli DiSC dilindungi oleh hak cipta (*proprietary*), sehingga data yang disediakan pada repositori publik ini bersifat alternatif atau modifikasi edukatif.
+*   Formulasi, interpretasi, dan hasil analisis tes kepribadian ini berada dalam ranah ilmu psikologi. Sesuai kode etik, penggunaan secara klinis atau formal hanya diperuntukkan bagi profesional psikologi yang berwenang.
+
+---
+
+## Teknologi yang Digunakan
+
+*   **HTML5 & CSS3**: Menggunakan styling CSS modern (Glassmorphism & variabel CSS).
+*   **PHP**: Sebagai bahasa pemrosesan di sisi server (*server-side processing*).
+*   **MySQL**: Untuk penyimpanan data deskripsi perilaku dan pola kepribadian.
+*   **Vanilla JavaScript**: Digunakan untuk merender grafik garis SVG secara dinamis tanpa library berat pihak ketiga.
+
+---
+
+## Donasi
+
+Jika Anda merasa proyek ini bermanfaat dan ingin memberikan dukungan kepada pengembang, Anda dapat menyalurkan donasi melalui:
+*   **Transfer Bank Lokal**:
+    *   Bank Jago (542): `5003 5796 1022`
+    *   Bank BCA Digital (Blu) (501): `000 576 776 186`
+    *   Bank Sinarmas (153): `005 462 4719`
+    *   Bank Syariah Indonesia (BSI): `821-342-5550`
+*   **PayPal**: [https://paypal.me/cahyadwiana](https://paypal.me/cahyadwiana)
+*   **QRIS** (CAHYADSN ID1022183125288):
+
+![Donasi via QRIS CAHYADSN](https://github.com/cahyadsn/wilayah/blob/master/docs/qr_code.cahyadsn.png?raw=true)
+
+---
+
+## Kontak
+
+Untuk pertanyaan, saran, atau kolaborasi, silakan hubungi kami melalui saluran berikut:
+*   **Facebook**: [Cahya DSN](https://m.facebook.com/cahya.dsn)
+*   **Email**: cahyadsn@gmail.com
+*   **Demo Aplikasi**: [psycho.cahyadsn.com/disc_id](http://psycho.cahyadsn.com/disc_id)
+*   **Repositori**: [github.com/cahyadsn/disc_id](https://github.com/cahyadsn/disc_id)
+
+---
+*Lisensi Proyek: [MIT License](/LICENSE)*
